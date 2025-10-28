@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centros de Interés - Deportes y Actividad Física</title>
+    <style>
+        /* --- Estilos previos iguales --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); text-align: center; animation: slideInDown 0.8s ease-out; }
+        @keyframes slideInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+        h1 { color: #4a5568; font-size: 2.5em; margin-bottom: 10px; background: linear-gradient(45deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .subtitle { color: #666; font-size: 1.2em; margin-bottom: 20px; }
+        .authors { background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 15px 25px; border-radius: 25px; display: inline-block; font-weight: bold; box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); }
+        .intro { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); animation: fadeInUp 0.8s ease-out 0.2s both; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .sports-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 30px; }
+        .sport-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; animation: fadeInUp 0.8s ease-out both; }
+        .sport-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); }
+        .video-container { position: relative; width: 100%; height: 200px; overflow: hidden; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; border-radius: 15px 15px 0 0; }
+        .video-placeholder { color: white; text-align: center; padding: 20px; }
+        .video-placeholder h4 { font-size: 1.2em; margin-bottom: 10px; }
+        .video-placeholder p { font-size: 0.9em; opacity: 0.9; margin-bottom: 15px; }
+        .video-link { background: rgba(255, 255, 255, 0.2); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .video-link:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.05); }
+        .sport-content { padding: 25px; }
+        .sport-title { color: #4a5568; font-size: 1.5em; margin-bottom: 10px; font-weight: bold; }
+        .sport-type { background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.8em; display: inline-block; margin-bottom: 15px; font-weight: bold; }
+        .sport-description { color: #666; margin-bottom: 15px; line-height: 1.6; }
+        .skills-section { margin-top: 20px; }
+        .skills-title { color: #4a5568; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; }
+        .skills-title::before { content: "🎯"; margin-right: 8px; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag { background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 5px 10px; border-radius: 12px; font-size: 0.85em; border: 1px solid rgba(102, 126, 234, 0.2); }
+        .benefits-section { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; margin-top: 30px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); animation: fadeInUp 0.8s ease-out 0.7s both; }
+        .benefits-title { color: #4a5568; font-size: 2em; margin-bottom: 20px; text-align: center; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .benefit-item { background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); padding: 20px; border-radius: 15px; border-left: 4px solid #667eea; }
+        .benefit-item h3 { color: #4a5568; margin-bottom: 10px; }
+        @media (max-width: 768px) { .container { padding: 10px; } h1 { font-size: 2em; } .sports-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Centros de Interés</h1>
+            <p class="subtitle">Deportes y Actividad Física para el Desarrollo Integral</p>
+            <div class="authors">Autores: Kemel Gamarra • Matias Serpa • Esney Parra</div>
+        </header>
+
+        <div class="intro">
+            <h2>🏃‍♂️ Descubre el Mundo del Deporte</h2>
+            <p>Los centros de interés deportivos son espacios fundamentales para el desarrollo integral de las personas. A través del deporte y la actividad física, no solo fortalecemos nuestro cuerpo, sino que también desarrollamos habilidades blandas esenciales como el trabajo en equipo, la disciplina, la perseverancia y el liderazgo.</p>
+        </div>
+
+        <div class="sports-grid">
+            <!-- Fútbol -->
+            <div class="sport-card">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <h4>🏈 Fútbol</h4>
+                        <p>Aprende las técnicas básicas del deporte más popular del mundo</p>
+                        <a href="https://youtu.be/9K5k2TwgL3A" target="_blank" class="video-link">Ver Video</a>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-title">Fútbol</h3>
+                    <span class="sport-type">Deporte Popular</span>
+                    <p class="sport-description">El deporte más popular del mundo, que combina técnica, estrategia y trabajo en equipo.</p>
+                    <div class="skills-section">
+                        <div class="skills-title">Habilidades Blandas:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Trabajo en Equipo</span>
+                            <span class="skill-tag">Liderazgo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ultimate -->
+            <div class="sport-card">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <h4>🥏 Ultimate Frisbee</h4>
+                        <p>El deporte del fair play y la honestidad</p>
+                        <a href="https://youtu.be/WaVwmdt658Y" target="_blank" class="video-link">Ver Video</a>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-title">Ultimate Frisbee</h3>
+                    <span class="sport-type">Deporte Alternativo</span>
+                    <p class="sport-description">Deporte de equipo sin árbitros donde los jugadores son responsables de hacer cumplir las reglas.</p>
+                    <div class="skills-section">
+                        <div class="skills-title">Habilidades Blandas:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Honestidad</span>
+                            <span class="skill-tag">Fair Play</span>
+                            <span class="skill-tag">Autorregulación</span>
+                            <span class="skill-tag">Respeto</span>
+                            <span class="skill-tag">Comunicación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tenis de Mesa -->
+            <div class="sport-card">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <h4>🏓 Tenis de Mesa</h4>
+                        <p>Reflejos, precisión y estrategia en cada punto</p>
+                        <a href="https://youtu.be/uAcTaNooll0" target="_blank" class="video-link">Ver Video</a>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-title">Tenis de Mesa</h3>
+                    <span class="sport-type">Deporte de Precisión</span>
+                    <p class="sport-description">Requiere concentración, rapidez y coordinación ojo-mano.</p>
+                    <div class="skills-section">
+                        <div class="skills-title">Habilidades Blandas:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Concentración</span>
+                            <span class="skill-tag">Coordinación ojo-mano</span>
+                            <span class="skill-tag">Rapidez de Reacción</span>
+                            <span class="skill-tag">Precisión</span>
+                            <span class="skill-tag">Toma de Decisiones</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Balonmano -->
+            <div class="sport-card">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <h4>🤾‍♂️ Balonmano</h4>
+                        <p>Velocidad, fuerza y trabajo en equipo</p>
+                        <a href="https://youtu.be/QxyPbPZxf9A" target="_blank" class="video-link">Ver Video</a>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-title">Balonmano</h3>
+                    <span class="sport-type">Deporte de Equipo</span>
+                    <p class="sport-description">Deporte dinámico con gran exigencia física y táctica.</p>
+                    <div class="skills-section">
+                        <div class="skills-title">Habilidades Blandas:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Trabajo en Equipo</span>
+                            <span class="skill-tag">Comunicación</span>
+                            <span class="skill-tag">Resistencia</span>
+                            <span class="skill-tag">Táctica</span>
+                            <span class="skill-tag">Toma de Decisiones</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voleibol -->
+            <div class="sport-card">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <h4>🏐 Voleibol</h4>
+                        <p>Coordinación, comunicación y saltos espectaculares</p>
+                        <a href="https://youtu.be/xsFOnhEXM0w" target="_blank" class="video-link">Ver Video</a>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-title">Voleibol</h3>
+                    <span class="sport-type">Deporte de Red</span>
+                    <p class="sport-description">Fomenta la cooperación, la estrategia y la resistencia física.</p>
+                    <div class="skills-section">
+                        <div class="skills-title">Habilidades Blandas:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Comunicación</span>
+                            <span class="skill-tag">Cooperación</span>
+                            <span class="skill-tag">Coordinación</span>
+                            <span class="skill-tag">Liderazgo</span>
+                            <span class="skill-tag">Resiliencia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kickball -->
+            <div class="sport-card">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <h4>⚽ Kickball</h4>
+                        <p>Un béisbol con el pie: diversión y estrategia</p>
+                        <a href="https://youtu.be/YmfSlHbHPBE" target="_blank" class="video-link">Ver Video</a>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-title">Kickball</h3>
+                    <span class="sport-type">Deporte Recreativo</span>
+                    <p class="sport-description">Combina elementos del béisbol y el fútbol, promoviendo la integración y el juego en equipo.</p>
+                    <div class="skills-section">
+                        <div class="skills-title">Habilidades Blandas:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Inclusión</span>
+                            <span class="skill-tag">Trabajo en Equipo</span>
+                            <span class="skill-tag">Coordinación</span>
+                            <span class="skill-tag">Estrategia Básica</span>
+                            <span class="skill-tag">Participación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ajedrez Deportivo -->
+            <div class="sport-card">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <h4>♟️ Ajedrez Deportivo</h4>
+                        <p>Estrategia, concentración y disciplina mental</p>
+                        <a href="https://youtu.be/G7iGNPzaQIY" target="_blank" class="video-link">Ver Video</a>
+                    </div>
+                </div>
+                <div class="sport-content">
+                    <h3 class="sport-title">Ajedrez Deportivo</h3>
+                    <span class="sport-type">Deporte Mental</span>
+                    <p class="sport-description">Desarrolla la memoria, el pensamiento crítico y la toma de decisiones bajo presión.</p>
+                    <div class="skills-section">
+                        <div class="skills-title">Habilidades Blandas:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Pensamiento Crítico</span>
+                            <span class="skill-tag">Concentración</span>
+                            <span class="skill-tag">Planificación</span>
+                            <span class="skill-tag">Paciencia</span>
+                            <span class="skill-tag">Toma de Decisiones</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="benefits-section">
+            <h2 class="benefits-title">🌟 Beneficios de los Centros de Interés Deportivos</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item"><h3>💪 Desarrollo Físico</h3><p>Mejora de la condición física y hábitos saludables.</p></div>
+                <div class="benefit-item"><h3>🧠 Desarrollo Mental</h3><p>Concentración, gestión del estrés e inteligencia emocional.</p></div>
+                <div class="benefit-item"><h3>👥 Desarrollo Social</h3><p>Trabajo en equipo, comunicación y respeto.</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
